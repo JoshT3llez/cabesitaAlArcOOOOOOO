@@ -1,0 +1,18 @@
+<ion-header>
+  <!-- ... (otros elementos de encabezado) -->
+  <ion-title>{{ userProfile?.username }}</ion-title>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div *ngIf="userProfile">
+    <!-- Mostrar otros detalles del perfil -->
+    <ion-avatar aria-hidden="true" slot="start">
+      <img [src]="userProfile.profileImageURL" *ngIf="userProfile.profileImageURL" />
+    </ion-avatar>
+    <!-- Otros detalles del perfil -->
+    <ion-item>
+      <ion-label>{{ userProfile.name }}</ion-label>
+    </ion-item>
+    <!-- Más detalles del perfil -->
+  </div>
+</ion-content>

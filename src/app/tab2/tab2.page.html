@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/tabs/tab1"></ion-back-button>
+
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Barra de búsqueda -->
+  <ion-searchbar show-clear-button="always" (ionInput)="onSearch($event)" (ionBlur)="onSearch($event)"></ion-searchbar>
+
+  <!-- Lista de usuarios -->
+  <ion-list *ngIf="filteredUsers.length > 0">
+    <ion-item *ngFor="let user of filteredUsers" (click)="handleUserClick(user)">
+      <ion-avatar slot="start">
+        <img [src]="user.profileImageURL" />
+      </ion-avatar>
+      <ion-label>{{ user.username }}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Mensaje si no se encuentran usuarios -->
+  <ion-item *ngIf="filteredUsers.length === 0 && users.length > 0">
+    <ion-label>No se encontraron usuarios.</ion-label>
+  </ion-item>
+
+  <!-- Mensaje si aún no hay usuarios disponibles -->
+  <ion-item *ngIf="users.length === 0">
+    <ion-label>Aún no hay usuarios disponibles.</ion-label>
+  </ion-item>
+</ion-content>
